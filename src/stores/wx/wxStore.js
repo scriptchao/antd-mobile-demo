@@ -44,9 +44,7 @@ class WxStore {
                     ]
                 });
                 wx.ready(function () {
-                    if (!shareData.link) {
-                        shareData.link = response.url
-                    }
+
                     wx.onMenuShareAppMessage(shareData);
                     wx.onMenuShareTimeline(shareData);
                     wx.onMenuShareQQ(shareData);

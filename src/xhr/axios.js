@@ -11,6 +11,7 @@ const config = {
     baseURL: requestConfig.origin,
     headers: {
         'Content-Type': 'application/json',
+        // 'Content-Type': 'application/x-www-form-urlencoded'
     },
 };
 
@@ -35,17 +36,20 @@ const xhr = (req = {}) => {
     const {method, url, body = {}} = req;
 
     if (method === 'get' || method === 'GET') {
-        config.params = body
 
+        config.data = {};
+        config.params = body;
     }
 
     if (method === 'post' || method === 'POST') {
-        config.data = body
+
+        config.params = {};
+        config.data = body;
     }
 
     config.url = url;
     config.method = method;
-    config.withCredentials = true;
+    // config.withCredentials = true;
 
     return axios(config)
         .catch((e) => {

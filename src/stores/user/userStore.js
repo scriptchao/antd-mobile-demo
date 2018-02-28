@@ -9,7 +9,7 @@ import xhr from '../../xhr'
 class UserStore {
 
     constructor() {
-        this.registerUrl = '/public/userRegister/register';
+        this.registerUrl = '/public/userRegister/register/json';
     }
 
     @action postRegister(body) {
