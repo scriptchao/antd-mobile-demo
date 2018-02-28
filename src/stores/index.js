@@ -3,7 +3,9 @@
  */
 
 import UserStore from './user/userStore'
+import WxStore from './wx/wxStore'
 
 export default {
-    UserStore
+    UserStore,
+    WxStore
 }

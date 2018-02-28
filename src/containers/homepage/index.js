@@ -3,7 +3,28 @@ import {observable} from 'mobx'
 import {observer, inject} from 'mobx-react'
 import Register from '../../components/register'
 
+@inject('WxStore') @observer
 export default class Homepage extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.wxStore = this.props.WxStore
+    }
+
+
+    componentDidMount() {
+        const body = {};
+        body.url = location.href.split('#')[0];
+
+        const shareData = {
+            title: '美滋滋!',
+            desc: '杀鸡就是要用牛刀哦!',
+            link: '',
+            imgUrl: '',
+        };
+        this.wxStore.getSignature(body, shareData)
+    }
+
     render() {
         return (
             <div className="homepage">
