@@ -24,12 +24,8 @@ axios.interceptors.request.use((requestConfig) => {
 axios.interceptors.response.use((res) => {
     NProgress.done();
 
-    if (res.statusText === 'OK' || res.statusText === '') {
-        return res.data;
-    }
+    return res.data;
 
-    Toast.fail(res.status);
-    return false
 });
 
 const xhr = (req = {}) => {
@@ -49,7 +45,7 @@ const xhr = (req = {}) => {
 
     config.url = url;
     config.method = method;
-    // config.withCredentials = true;
+    config.withCredentials = true;
 
     return axios(config)
         .catch((e) => {

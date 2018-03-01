@@ -28,7 +28,7 @@ export default class Homepage extends React.Component {
 
     render() {
         return (
-            <div className="homepage cover">
+            <div className="homepage">
                 <div className="homepage-top">
                     <p className="title">智能发薪，一键报税</p>
                     <p className="title-sub">
