@@ -3,6 +3,7 @@ import {observable} from 'mobx'
 import {observer, inject} from 'mobx-react'
 import Register from '../../components/register'
 import config from '../../../config'
+import './index.sass'
 
 @inject('WxStore') @observer
 export default class Homepage extends React.Component {
@@ -27,8 +28,20 @@ export default class Homepage extends React.Component {
 
     render() {
         return (
-            <div className="homepage">
-                <Register/>
+            <div className="homepage cover">
+                <div className="homepage-top">
+                    <p className="title">智能发薪，一键报税</p>
+                    <p className="title-sub">
+                        <span>7*24小时</span>
+                        <i>{null}</i>
+                        <span>"0"手续费</span>
+                        <i>{null}</i>
+                        <span>实时到账</span>
+                    </p>
+                </div>
+                <div className="homepage-content">
+                    <Register/>
+                </div>
             </div>
         )
     }

@@ -5,6 +5,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from 'mobx-react';
 import {Router, Route} from 'react-router-dom';
+import './styles/index.sass'
 import history from './history';
 import stores from './stores'
 import App from './routes';
