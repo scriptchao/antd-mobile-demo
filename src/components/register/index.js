@@ -27,6 +27,8 @@ export default class Register extends React.Component {
     @observable success = '';
     @observable hook;
 
+    @observable once;
+
     constructor(props) {
         super(props);
 
@@ -40,6 +42,10 @@ export default class Register extends React.Component {
 
 
     handleRegister = () => {
+        if(this.once) {
+            return true
+        }
+
         if (!this.companyNameError) {
             Toast.info('请输入企业名称!')
         } else if (!this.emailError) {
@@ -58,6 +64,7 @@ export default class Register extends React.Component {
             this.userStore.postRegister(body).then(response => {
                 if(response) {
                     this.success = 'success';
+                    this.once = true;
                 }
             })
         }
