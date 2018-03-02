@@ -21,6 +21,7 @@ export default class Homepage extends React.Component {
         const shareData = {
             title: '美滋滋!',
             desc: '杀鸡就是要用牛刀哦!',
+            link: location.href.split('#')[0],
             imgUrl: config.imgUrl,
         };
         this.wxStore.getSignature(body, shareData)

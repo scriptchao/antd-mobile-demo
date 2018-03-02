@@ -11,13 +11,13 @@ export default class Input extends React.Component {
 
 
     render() {
-        const {type = 'text', className = '', placeholder, value = '', prefix} = this.props;
+        const {type = 'text', className = '', placeholder, value = '', prefix, error, wrapper} = this.props;
         return (
-            prefix ?
+            wrapper ?
                 <span className="zyc-input-wrapper">
-                    <span className="zyc-input-prefix">
-                        {prefix}
-                    </span>
+                    {
+                        prefix ? <span className="zyc-input-prefix">{prefix}</span> : null
+                    }
                     <input
                         type={type}
                         className={`${className} zyc-input`}
@@ -25,6 +25,16 @@ export default class Input extends React.Component {
                         value={value}
                         onChange={this.props.onChange}
                     />
+                    {
+                        typeof error === 'boolean' ?
+                            <span className="zyc-input-suffix">
+                                {
+                                    error ?
+                                        <i className="iconfont icon-zhengque success"/> :
+                                        <i className="iconfont icon-tishi warn"/>
+                                }
+                            </span> : null
+                    }
                 </span> :
                 <input
                     type={type}
@@ -33,7 +43,6 @@ export default class Input extends React.Component {
                     value={value}
                     onChange={this.props.onChange}
                 />
-
         )
     }
 }

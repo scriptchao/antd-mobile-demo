@@ -10,6 +10,7 @@ import qs from 'qs'
 import {WingBlank, WhiteSpace, InputItem, Button, Toast} from 'antd-mobile'
 import './index.sass'
 import Input from '../input'
+import regular from '../regular'
 
 @inject('UserStore') @observer
 export default class Register extends React.Component {
@@ -17,6 +18,11 @@ export default class Register extends React.Component {
     @observable email = '';
     @observable password = '';
     @observable rePassword = '';
+
+    @observable companyNameError;
+    @observable emailError;
+    @observable passwordError;
+    @observable rePasswordError;
 
     @observable success = '';
     @observable hook;
@@ -34,12 +40,12 @@ export default class Register extends React.Component {
 
 
     handleRegister = () => {
-        if (!this.companyName) {
+        if (!this.companyNameError) {
             Toast.info('请输入企业名称!')
-        } else if (!this.email) {
-            Toast.info('请输入注册邮箱!')
-        } else if (!this.password || !this.rePassword) {
-            Toast.info('请输入登录密码!')
+        } else if (!this.emailError) {
+            Toast.info('邮箱格式不正确!')
+        } else if (!this.passwordError || !this.rePasswordError) {
+            Toast.info('密码过于简单!')
         } else if (this.password !== this.rePassword) {
             Toast.info('两次输入密码不一致!')
         } else {
@@ -66,30 +72,42 @@ export default class Register extends React.Component {
     render() {
         return (
             <div className="zyc-register">
-                <div style={{opacity: this.success ? 0 : 1}}>
+                <div style={{visibility: this.success ? 'hidden' : 'visible'}}>
                     <Input type="text" placeholder="企业名称" value={this.companyName}
+                           wrapper
                            prefix={<i className="iconfont icon-gongsi"/>}
+                           error={this.companyNameError}
                            onChange={(e) => {
-                               this.companyName = e.target.value
+                               this.companyName = e.target.value;
+                               this.companyNameError = regular.companyName.test(this.companyName);
                            }}>
                     </Input>
                     <WhiteSpace/>
                     <Input type="text" placeholder="邮箱" value={this.email}
+                           wrapper
                            prefix={<i className="iconfont icon-youxiang"/>}
+                           error={this.emailError}
                            onChange={(e) => {
-                               this.email = e.target.value
+                               this.email = e.target.value;
+                               this.emailError = regular.email.test(this.email)
                            }}/>
                     <WhiteSpace/>
                     <Input type="password" placeholder="密码" value={this.password}
+                           wrapper
                            prefix={<i className="iconfont icon-mima"/>}
+                           error={this.passwordError}
                            onChange={(e) => {
-                               this.password = e.target.value
+                               this.password = e.target.value;
+                               this.passwordError = regular.password.test(this.password)
                            }}/>
                     <WhiteSpace/>
                     <Input type="password" placeholder="确认密码" value={this.rePassword}
+                           wrapper
                            prefix={<i className="iconfont icon-mima"/>}
+                           error={this.rePasswordError}
                            onChange={(e) => {
-                               this.rePassword = e.target.value
+                               this.rePassword = e.target.value;
+                               this.rePasswordError = regular.password.test(this.rePassword)
                            }}/>
                     <WhiteSpace size="lg"/>
                 </div>
