@@ -6,8 +6,9 @@
         justify-content: center
         .animate-btn
             display: flex
+            flex-direction: column
             align-items: center
-            justify-content: center
+            justify-content: space-between
             border-radius: 5px
             background: $blue
             height: 38px
@@ -24,14 +25,15 @@
                 transform: translateY(-150px)
                 background: white
             .animate-text
-                position: absolute
-                bottom: -40px
+                position: relative
+                bottom: -35px
+                white-space: nowrap
             .animate-hook
                 position: relative
                 width: 30px
                 height: 20px
                 transform: rotate(-45deg)
-                top: -5px
+                top: 20px
                 &:before
                     content: ''
                     position: absolute

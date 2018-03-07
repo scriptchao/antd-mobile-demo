@@ -85,7 +85,7 @@ export default class Register extends React.Component {
                            prefix={<i className="iconfont icon-gongsi"/>}
                            error={this.companyNameError}
                            onChange={(e) => {
-                               this.companyName = e.target.value;
+                               this.companyName = e.target.value.replace(/^\s+|\s+$/g,'');
                                this.companyNameError = regular.companyName.test(this.companyName);
                            }}>
                     </Input>
@@ -95,7 +95,7 @@ export default class Register extends React.Component {
                            prefix={<i className="iconfont icon-youxiang"/>}
                            error={this.emailError}
                            onChange={(e) => {
-                               this.email = e.target.value;
+                               this.email = e.target.value.replace(/^\s+|\s+$/g,'');
                                this.emailError = regular.email.test(this.email)
                            }}/>
                     <WhiteSpace/>
@@ -104,7 +104,7 @@ export default class Register extends React.Component {
                            prefix={<i className="iconfont icon-mima"/>}
                            error={this.passwordError}
                            onChange={(e) => {
-                               this.password = e.target.value;
+                               this.password = e.target.value.replace(/^\s+|\s+$/g,'');
                                this.passwordError = regular.password.test(this.password)
                            }}/>
                     <WhiteSpace/>
@@ -113,7 +113,7 @@ export default class Register extends React.Component {
                            prefix={<i className="iconfont icon-mima"/>}
                            error={this.rePasswordError}
                            onChange={(e) => {
-                               this.rePassword = e.target.value;
+                               this.rePassword = e.target.value.replace(/^\s+|\s+$/g,'');
                                this.rePasswordError = regular.password.test(this.rePassword)
                            }}/>
                     <WhiteSpace size="lg"/>
