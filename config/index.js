@@ -6,7 +6,7 @@ const host = '127.0.0.1';
 const port = 6060;
 const origin = process.env.NODE_ENV === 'development' ? 'https://dev.xinfud.com/salary' : 'https://dev.xinfud.com/salary';
 // const origin = 'http://192.168.2.103:8080/salary';
-const imgUrl = process.env.NODE_ENV === 'development' ? 'https://image.xinfud.com/1.png' : 'https://image.xinfud.com/1.png';
+const imgUrl = 'https://image.xinfud.com/sharePhoto.jpg';
 
 export default {
     host,

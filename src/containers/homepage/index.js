@@ -19,8 +19,8 @@ export default class Homepage extends React.Component {
         body.url = location.href.split('#')[0];
 
         const shareData = {
-            title: '美滋滋!',
-            desc: '杀鸡就是要用牛刀哦!',
+            title: '你有一笔财政奖励未领取!',
+            desc: '用薪福多，体验智能发薪，享受财政奖励，国企背景更安全!',
             link: location.href.split('#')[0],
             imgUrl: config.imgUrl,
         };
